@@ -47,12 +47,6 @@ class TodoFormWidget extends StatelessWidget {
   Widget buildDescription() => TextFormField(
         initialValue: description,
         onChanged: onChangedDescription,
-        validator: (title) {
-          if (description.isEmpty) {
-            return 'the description cannot be empty';
-          }
-          return null;
-        },
         decoration: const InputDecoration(
           border: UnderlineInputBorder(),
           labelText: 'Description',
