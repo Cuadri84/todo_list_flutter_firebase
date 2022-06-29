@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list/main.dart';
+import 'package:todo_list/widget/todo_list_widget.dart';
 
-import '../dialogs/addDialog.dart';
+import '../dialogs/add_dialog.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final tabs = [
-      Container(),
+      const TodoListWidget(),
       Container(),
     ];
 
