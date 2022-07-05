@@ -45,6 +45,7 @@ class TodoFormWidget extends StatelessWidget {
         ),
       );
   Widget buildDescription() => TextFormField(
+        maxLines: 3,
         initialValue: description,
         onChanged: onChangedDescription,
         decoration: const InputDecoration(

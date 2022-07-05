@@ -26,6 +26,8 @@ class TodosProvider extends ChangeNotifier {
   ];
 
   List<Todo> get todos => _todos.where((todo) => todo.isDone == false).toList();
+  List<Todo> get todosCompleted =>
+      _todos.where((todo) => todo.isDone == true).toList();
 
   void addTodo(Todo todo) {
     _todos.add(todo);
@@ -34,6 +36,18 @@ class TodosProvider extends ChangeNotifier {
 
   void removeTodo(Todo todo) {
     _todos.remove(todo);
+    notifyListeners();
+  }
+
+  bool toggleTodoStatus(Todo todo) {
+    todo.isDone = !todo.isDone;
+    notifyListeners();
+    return todo.isDone;
+  }
+
+  void updateTodo(Todo todo, String title, String desription) {
+    todo.title = title;
+    todo.description = desription;
     notifyListeners();
   }
 }

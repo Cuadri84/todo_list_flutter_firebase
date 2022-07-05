@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_list/provider/todos.dart';
-import 'package:todo_list/widget/todo_widget.dart';
 
-class TodoListWidget extends StatelessWidget {
-  const TodoListWidget({Key? key}) : super(key: key);
+import '../provider/todos.dart';
+import 'todo_widget.dart';
+
+class CompletedListWidget extends StatelessWidget {
+  const CompletedListWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<TodosProvider>(context);
-    final todos = provider.todos;
+    final todos = provider.todosCompleted;
 
     return todos.isEmpty
         ? const Center(
             child: Text(
-              'No TODOS',
+              'No TODOS completed',
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
@@ -27,7 +28,7 @@ class TodoListWidget extends StatelessWidget {
             separatorBuilder: (context, index) => const SizedBox(
               height: 10,
             ),
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(10),
             itemCount: todos.length,
             itemBuilder: (context, index) {
               final todo = todos[index];

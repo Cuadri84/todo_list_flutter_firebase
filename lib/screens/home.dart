@@ -3,6 +3,7 @@ import 'package:todo_list/main.dart';
 import 'package:todo_list/widget/todo_list_widget.dart';
 
 import '../dialogs/add_dialog.dart';
+import '../widget/completed_list_widget.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -18,7 +19,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final tabs = [
       const TodoListWidget(),
-      Container(),
+      const CompletedListWidget(),
     ];
 
     return Scaffold(
