@@ -17,7 +17,7 @@ class CompletedListWidget extends StatelessWidget {
             child: Text(
               'No TODOS completed',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 18,
                 fontWeight: FontWeight.w600,
                 color: Colors.black,
               ),
@@ -28,7 +28,7 @@ class CompletedListWidget extends StatelessWidget {
             separatorBuilder: (context, index) => const SizedBox(
               height: 10,
             ),
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(20),
             itemCount: todos.length,
             itemBuilder: (context, index) {
               final todo = todos[index];

@@ -16,7 +16,7 @@ class TodoListWidget extends StatelessWidget {
             child: Text(
               'No TODOS',
               style: TextStyle(
-                fontSize: 12,
+                fontSize: 18,
                 fontWeight: FontWeight.w600,
                 color: Colors.black,
               ),
@@ -27,7 +27,7 @@ class TodoListWidget extends StatelessWidget {
             separatorBuilder: (context, index) => const SizedBox(
               height: 10,
             ),
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(20),
             itemCount: todos.length,
             itemBuilder: (context, index) {
               final todo = todos[index];

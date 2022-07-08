@@ -5,7 +5,6 @@ import 'package:todo_list/model/todo.dart';
 
 import '../provider/todos.dart';
 import '../screens/edit_todo_screen.dart';
-import '../utils/utils.dart';
 
 class TodoWidget extends StatelessWidget {
   const TodoWidget({Key? key, required this.todo}) : super(key: key);
@@ -23,7 +22,7 @@ class TodoWidget extends StatelessWidget {
               children: [
                 SlidableAction(
                   onPressed: (_) => editTodo(context, todo),
-                  backgroundColor: const Color.fromARGB(255, 27, 203, 29),
+                  backgroundColor: const Color.fromARGB(255, 122, 204, 124),
                   foregroundColor: Colors.white,
                   icon: Icons.edit,
                 ),
@@ -34,7 +33,7 @@ class TodoWidget extends StatelessWidget {
               children: [
                 SlidableAction(
                   onPressed: (_) => deleteTodo(context, todo),
-                  backgroundColor: const Color(0xFFFE4A49),
+                  backgroundColor: const Color.fromARGB(255, 255, 117, 117),
                   foregroundColor: Colors.white,
                   icon: Icons.delete,
                 ),
@@ -48,16 +47,21 @@ class TodoWidget extends StatelessWidget {
         child: Row(
           children: [
             Checkbox(
-              activeColor: Colors.amber,
-              checkColor: Colors.grey,
+              activeColor: const Color.fromARGB(255, 233, 229, 214),
+              checkColor: Colors.blueGrey,
               value: todo.isDone,
+              side: MaterialStateBorderSide.resolveWith(
+                (states) =>
+                    const BorderSide(width: 2.0, color: Colors.blueGrey),
+              ),
               onChanged: (_) {
                 final provider =
                     Provider.of<TodosProvider>(context, listen: false);
                 final isDone = provider.toggleTodoStatus(todo);
 
-                Utils.showSnackBar(context,
-                    isDone ? 'Task completed' : 'Task not yet completed');
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text(
+                        isDone ? 'TODO completed' : 'TODO not yet completed')));
               },
             ),
             const SizedBox(
@@ -76,7 +80,7 @@ class TodoWidget extends StatelessWidget {
                   ),
                 ),
                 const Divider(
-                  color: Colors.black,
+                  color: Colors.blueGrey,
                   thickness: 1.0,
                 ),
                 if (todo.description.isNotEmpty)
@@ -85,7 +89,7 @@ class TodoWidget extends StatelessWidget {
                     child: Text(
                       todo.description,
                       style: const TextStyle(
-                        fontSize: 15,
+                        fontSize: 18,
                         color: Colors.black54,
                       ),
                     ),
@@ -99,8 +103,8 @@ class TodoWidget extends StatelessWidget {
   void deleteTodo(BuildContext context, Todo todo) {
     final provider = Provider.of<TodosProvider>(context, listen: false);
     provider.removeTodo(todo);
-
-    Utils.showSnackBar(context, 'Deleted Task');
+    ScaffoldMessenger.of(context)
+        .showSnackBar(const SnackBar(content: Text("DELETED TODO")));
   }
 
   void editTodo(BuildContext context, Todo todo) => Navigator.of(context).push(

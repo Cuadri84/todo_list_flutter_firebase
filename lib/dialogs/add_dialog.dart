@@ -19,6 +19,9 @@ class _AddDialogState extends State<AddDialog> {
 
   @override
   Widget build(BuildContext context) => AlertDialog(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
         content: Form(
           key: _formKey,
           child: Column(

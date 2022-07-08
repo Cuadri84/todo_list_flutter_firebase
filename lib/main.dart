@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           title: title,
           theme: ThemeData(
-            primarySwatch: Colors.grey,
+            primarySwatch: Colors.blueGrey,
           ),
           home: const Home()),
     );
